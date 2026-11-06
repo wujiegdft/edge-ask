@@ -1,0 +1,3 @@
+# Copy to .dev.vars, then replace these placeholders. Never commit real tokens.
+CLOUDFLARE_ACCOUNT_ID="your-cloudflare-account-id"
+CLOUDFLARE_API_TOKEN="your-workers-ai-read-token"

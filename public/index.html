@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A small, transparent LangChain.js experiment. Paste a document, ask a question, and get an answer on Cloudflare Workers." />
+    <meta name="color-scheme" content="light" />
+    <title>Edge Ask — Your text, a clearer answer</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Edge Ask home"><span class="brand-icon" aria-hidden="true">↗</span>edge<span class="brand-light">ask</span><span class="version">v1</span></a>
+        <a class="source-link" href="https://github.com/wujiegdft/edge-ask" target="_blank" rel="noreferrer">View source <span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow"><span class="status-dot"></span> SMALL EXPERIMENT. REAL CHAIN.</p>
+            <h1 id="page-title">Your text.<br /><span>A clearer answer.</span></h1>
+            <p class="intro-copy">Give your document a question.<br /> Let one simple LangChain do the reading.</p>
+          </div>
+          <aside class="chain-note" aria-label="How it works">
+            <p class="micro-label">UNDER THE HOOD / LCEL</p>
+            <div class="pipeline"><span>PromptTemplate</span><b aria-hidden="true">→</b><span>Chat model</span><b aria-hidden="true">→</b><span>StringOutputParser</span></div>
+            <p>No retrieval. No agents. Just your context, in and out.</p>
+          </aside>
+        </section>
+
+        <form id="ask-form" class="workspace">
+          <section class="document-panel" aria-labelledby="document-label">
+            <div class="panel-heading">
+              <label id="document-label" for="document"><span class="step">01</span> Your document</label>
+              <button id="example" class="text-button" type="button">Try an example <span aria-hidden="true">↗</span></button>
+            </div>
+            <textarea id="document" name="document" maxlength="20000" required placeholder="Paste an article, a set of notes, or something you want to understand…" aria-describedby="document-help document-count" spellcheck="false"></textarea>
+            <div class="document-footer">
+              <span id="document-help">Plain text. No upload needed.</span>
+              <output id="document-count" for="document">0 / 20,000</output>
+            </div>
+          </section>
+
+          <div class="right-column">
+            <section class="question-panel" aria-labelledby="question-label">
+              <label id="question-label" for="question"><span class="step">02</span> Your question</label>
+              <textarea id="question" name="question" maxlength="1000" rows="3" required placeholder="What would you like to know?" aria-describedby="question-help"></textarea>
+              <div class="question-actions">
+                <span id="question-help">Ask about the text on the left.</span>
+                <button id="submit" class="submit-button" type="submit"><span id="submit-label">Ask document</span><span aria-hidden="true">↗</span></button>
+              </div>
+            </section>
+
+            <section id="answer-panel" class="answer-panel" aria-labelledby="answer-label" aria-busy="false">
+              <div class="answer-heading"><h2 id="answer-label"><span class="step">03</span> The answer</h2><span id="answer-state" class="answer-state">READY WHEN YOU ARE</span></div>
+              <div id="answer" class="answer-text" role="status" aria-live="polite" aria-atomic="true"><span class="empty-mark" aria-hidden="true">✳</span><p>A little context goes a long way.</p><span class="empty-help">Your answer will appear here, grounded in your document.</span></div>
+            </section>
+          </div>
+        </form>
+        <p class="privacy-note"><span aria-hidden="true">ⓘ</span> Your text is sent to Cloudflare Workers AI to generate an answer. Edge Ask doesn't store it. AI can make mistakes.</p>
+        <noscript><p class="noscript">Enable JavaScript to ask a question.</p></noscript>
+      </main>
+
+      <footer class="site-footer"><span>A learning project, not a black box.</span><span>LangChain.js <span class="footer-plus">+</span> Cloudflare Workers <span class="footer-mark" aria-hidden="true">↗</span></span></footer>
+    </div>
+  </body>
+</html>
