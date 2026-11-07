@@ -19,16 +19,8 @@
 
       <main>
         <section class="intro" aria-labelledby="page-title">
-          <div>
-            <p class="eyebrow"><span class="status-dot"></span> SMALL EXPERIMENT. REAL CHAIN.</p>
-            <h1 id="page-title">Your text.<br /><span>A clearer answer.</span></h1>
-            <p class="intro-copy">Give your document a question.<br /> Let one simple LangChain do the reading.</p>
-          </div>
-          <aside class="chain-note" aria-label="How it works">
-            <p class="micro-label">UNDER THE HOOD / LCEL</p>
-            <div class="pipeline"><span>PromptTemplate</span><b aria-hidden="true">→</b><span>Chat model</span><b aria-hidden="true">→</b><span>StringOutputParser</span></div>
-            <p>No retrieval. No agents. Just your context, in and out.</p>
-          </aside>
+          <h1 id="page-title">Ask your document.</h1>
+          <p class="intro-copy">Paste your text, then ask a question. Get an answer grounded in your document.</p>
         </section>
 
         <form id="ask-form" class="workspace">
@@ -61,6 +53,11 @@
           </div>
         </form>
         <p class="privacy-note"><span aria-hidden="true">ⓘ</span> Your text is sent to Cloudflare Workers AI to generate an answer. Edge Ask doesn't store it. AI can make mistakes.</p>
+        <aside class="chain-note" aria-label="How it works">
+          <p class="micro-label">UNDER THE HOOD / LCEL</p>
+          <div class="pipeline"><span>PromptTemplate</span><b aria-hidden="true">→</b><span>Chat model</span><b aria-hidden="true">→</b><span>StringOutputParser</span></div>
+          <p>No retrieval. No agents. Just your context, in and out.</p>
+        </aside>
         <noscript><p class="noscript">Enable JavaScript to ask a question.</p></noscript>
       </main>
 
