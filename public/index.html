@@ -13,7 +13,7 @@
   <body>
     <div class="page">
       <header class="site-header">
-        <a class="brand" href="/" aria-label="Edge Ask home"><span class="brand-icon" aria-hidden="true">↗</span>edge<span class="brand-light">ask</span><span class="version">v1</span></a>
+        <a class="brand" href="/" aria-label="Edge Ask home"><span class="brand-icon" aria-hidden="true">↗</span>edge<span class="brand-light">ask</span><span class="version">RAG</span></a>
         <a class="source-link" href="https://github.com/wujiegdft/edge-ask" target="_blank" rel="noreferrer">View source <span aria-hidden="true">↗</span></a>
       </header>
 
@@ -52,11 +52,11 @@
             </section>
           </div>
         </form>
-        <p class="privacy-note"><span aria-hidden="true">ⓘ</span> Your text is sent to Cloudflare Workers AI to generate an answer. Edge Ask doesn't store it. AI can make mistakes.</p>
+        <p class="privacy-note"><span aria-hidden="true">ⓘ</span> Cloudflare Workers AI processes your text; Vectorize stores chunks temporarily. Deletion is best-effort. Avoid sensitive text. AI can make mistakes.</p>
         <aside class="chain-note" aria-label="How it works">
           <p class="micro-label">UNDER THE HOOD / LCEL</p>
           <div class="pipeline"><span>PromptTemplate</span><b aria-hidden="true">→</b><span>Chat model</span><b aria-hidden="true">→</b><span>StringOutputParser</span></div>
-          <p>No retrieval. No agents. Just your context, in and out.</p>
+          <p>Split → embed → Vectorize top-4 → LCEL. No agents or chat history.</p>
         </aside>
         <noscript><p class="noscript">Enable JavaScript to ask a question.</p></noscript>
       </main>

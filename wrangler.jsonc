@@ -17,6 +17,17 @@
     "directory": "./public",
     "run_worker_first": ["/api/*"]
   },
+  "ai": {
+    "binding": "AI",
+    "remote": true
+  },
+  "vectorize": [
+    {
+      "binding": "VECTORIZE",
+      "index_name": "edge-ask-documents",
+      "remote": true
+    }
+  ],
   "vars": {
     "CLOUDFLARE_ACCOUNT_ID": "cbcb9be02f5c56f15463906657908eb9"
   }

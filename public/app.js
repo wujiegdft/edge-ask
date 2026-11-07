@@ -16,11 +16,11 @@ documentInput.addEventListener("input", () => {
 exampleButton.addEventListener("click", () => {
   documentInput.value = `Edge Ask is a small document question-answering demo built with TypeScript on Cloudflare Workers.
 
-When you ask a question, the Worker sends your full document and question to Cloudflare Workers AI. Edge Ask does not store your document or keep a conversation history.
+When you ask a question, a LangChain text splitter divides your document into overlapping chunks. Workers AI embeds those chunks and your question. Cloudflare Vectorize stores the chunks temporarily in an isolated request namespace and retrieves the four most relevant ones.
 
-The backend uses LangChain Expression Language (LCEL). A PromptTemplate combines the document and question into a prompt. A chat model generates a response. A StringOutputParser turns that response into plain text.
+The backend uses LangChain Expression Language (LCEL). A PromptTemplate combines only the retrieved chunks and question into a prompt. The same Workers AI chat model generates a response. A StringOutputParser turns that response into plain text.
 
-This first version has no retrieval, vector database, agents, or extra tools. Every question is answered in a single, independent model call.`;
+Edge Ask requests deletion of temporary vectors after retrieval, but cleanup is best-effort. It keeps no conversation history and uses no agents or tools. Each question independently indexes and searches the pasted document.`;
   questionInput.value = "What happens to my document when I ask a question?";
   documentInput.setCustomValidity("");
   questionInput.setCustomValidity("");
@@ -57,7 +57,7 @@ form.addEventListener("submit", async (event) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
-      signal: AbortSignal.timeout(40_000),
+      signal: AbortSignal.timeout(75_000),
     });
     const data = await response.json();
     if (!response.ok) throw new Error(data.error || "Something went wrong. Please try again.");

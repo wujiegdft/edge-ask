@@ -5,6 +5,8 @@ import { PromptTemplate } from "@langchain/core/prompts";
 export interface Env {
   CLOUDFLARE_ACCOUNT_ID: string;
   CLOUDFLARE_API_TOKEN?: string;
+  AI: Ai;
+  VECTORIZE: Vectorize;
 }
 
 export function createAnswerChain(env: Env) {
